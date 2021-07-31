@@ -11,3 +11,4 @@ class Post(models.Model):
     # genres
     # comments
     # likes_count
+

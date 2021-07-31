@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 from .models import Post
-from .forms import PostForm
+from .forms import PostForm, RawPostForm
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
@@ -39,6 +39,14 @@ def post_create_view(request, *args, **kwargs):
         'form': form,
     }
     return render(request, 'pages/post_create.html', context)
+
+def post_edit_view(request, id, *args, **kwargs):
+    form = PostForm(id=id)
+    context = {
+        'form': form,
+    }
+    return render(request, 'pages/post_create.html', context)
+
 
 def messages_view(request, *args, **kwargs):
     #return HttpResponse('<h1> Messages </h1>'
