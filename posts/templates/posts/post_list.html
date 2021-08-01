@@ -4,7 +4,7 @@
 
 <a href={{ absolute_create_url }}>Create a post</a>
 {% for object in object_list %}
-	<p>Author: {{ object.author }}</p>
+<!-- <p>Author: {{ object.author }}</p> -->
 	<p>Title: <a href="{{ object.get_absolute_url }}">{{ object.title }}</a></p>
 	<br>
 {% endfor %}

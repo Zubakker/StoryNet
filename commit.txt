@@ -1,3 +1,1 @@
-move posts into another app with function based views
-
-Create new posts app, move post-based views, models, templates.
+change posts views from function based into class based
