@@ -1,8 +1,4 @@
-from django.http import HttpResponse
-from django.shortcuts import render
-
-from .models import Post
-from .forms import PostForm, RawPostForm
+from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
@@ -22,31 +18,6 @@ def author_view(request, *args, **kwargs):
 def drafts_view(request, *args, **kwargs):
     #return HttpResponse('<h1> Drafts </h1>'
     return render(request, 'pages/drafts.html', {})
-
-def post_view(request, *args, **kwargs):
-    obj = Post.objects.get(id=1)
-    context = {
-            'object': obj,
-    }
-    return render(request, 'pages/post.html', context )
-
-def post_create_view(request, *args, **kwargs):
-    form = PostForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-
-    context = {
-        'form': form,
-    }
-    return render(request, 'pages/post_create.html', context)
-
-def post_edit_view(request, id, *args, **kwargs):
-    form = PostForm(id=id)
-    context = {
-        'form': form,
-    }
-    return render(request, 'pages/post_create.html', context)
-
 
 def messages_view(request, *args, **kwargs):
     #return HttpResponse('<h1> Messages </h1>'

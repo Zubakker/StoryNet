@@ -1,1 +1,3 @@
-add form support for /post_create page
+move posts into another app with function based views
+
+Create new posts app, move post-based views, models, templates.

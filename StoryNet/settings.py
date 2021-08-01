@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'pages',
+    'posts',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,11 @@ ROOT_URLCONF = 'StoryNet.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'pages')],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'), 
+            os.path.join(BASE_DIR, 'pages'), 
+            os.path.join(BASE_DIR, 'posts')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

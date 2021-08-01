@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>Title: {{ object.title }}</p>
+<p>Author: {{ object.author }}</p>
+<p>Epigraph: {{ object.epigraph }}</p>
+<p>Text: {{ object.text}}</p>
+<ul>
+	<li>
+		<p><a href=' {{ object.get_absolute_edit_url }} '>Edit</a></p>
+	</li>
+	<li>
+		<form method='POST'> {% csrf_token %}
+			<input type='submit' value='Delete' />
+		</form>
+	</li>
+</ul>
+
+{% endblock %}
