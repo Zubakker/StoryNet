@@ -1,4 +1,16 @@
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse 
+
+from django.contrib.auth import authenticate
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm 
+from django.contrib.auth.models import User
+from django.views.generic import (
+        CreateView,
+        UpdateView, View,
+        DetailView,
+        FormView,
+)
+
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
@@ -30,3 +42,26 @@ def news_view(request, *args, **kwargs):
 def auth_view(request, *args, **kwargs):
     #return HttpResponse('<h1> Auth </h1>'
     return render(request, 'pages/auth.html', {})
+
+class RegisterView(CreateView):
+    queryset = User.objects.all()
+    form_class = UserCreationForm 
+    template_name = 'pages/register_form.html'
+    c_username = ''
+    c_password = ''
+
+
+    def form_valid(self, form):
+        #self.c_username = form.cleaned_data['username']
+        #self.c_password = form.cleaned_data['password']
+        return super().form_valid(form)
+
+
+    def get_success_url(self, *args, **kwargs):
+        #user = authenticate(username=self.c_username, password=self.c_password)
+        #user2 = User.objects.get(username=self.c_username, password=self.c_password)
+        #print(user)
+        #print(user2)
+        success_url = reverse('login')
+        return success_url
+

@@ -1,1 +1,7 @@
-change posts views from function based into class based
+add registration and login
+
+Registration is made with a RegisterView class in pages/views.py, 
+django's contib.auth.forms UserCreationForm is used for it
+
+Login is made by django's contrib.auth.urls and default django's 
+views and forms.

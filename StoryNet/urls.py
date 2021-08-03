@@ -19,12 +19,18 @@ from django.urls import path, include
 from pages.views import (
         home_view, author_view, drafts_view, 
         messages_view, news_view, auth_view, 
+        RegisterView, # AuthoriseView,
 )
 
 urlpatterns = [
     path('post/', include('posts.urls')),
 
     path('', home_view, name='home'),
+    path('register/', RegisterView.as_view(), name='register'),
+    # path('authorise/', AuthoriseView.as_view(), name='authorize'),
+
+    path('accounts/', include('django.contrib.auth.urls')),
+
     path('author/<int:id>', author_view, name='author-by-id'),
     path('drafts/', drafts_view, name='drafts'),
     path('messages/', messages_view, name='messages'),
