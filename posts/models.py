@@ -2,9 +2,18 @@ from django.db import models
 from django.urls import reverse
 
 from django.conf import settings
+from django.contrib.auth.models import User
 
 
 # Create your models here.
+class MyUser(models.Model):
+    user     = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL,
+                        null=True
+               )
+    contacts = models.CharField(max_length=512, blank=True, null=True)
+    biograpy = models.CharField(max_length=2048, blank=True, null=True)
+    status   = models.CharField(max_length=128, blank=True, null=True)
+
 class Post(models.Model):
     author      = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, 
                             blank=True, null=True, default=1

@@ -10,6 +10,9 @@ from django.views.generic import (
         DetailView,
         FormView,
 )
+import sys
+sys.path.append("..")
+from posts.models import Post, MyUser
 
 
 # Create your views here.
@@ -48,20 +51,28 @@ class RegisterView(CreateView):
     form_class = UserCreationForm 
     template_name = 'registration/register.html'
     c_username = ''
-    c_password = ''
 
 
     def form_valid(self, form):
-        #self.c_username = form.cleaned_data['username']
-        #self.c_password = form.cleaned_data['password']
+        self.c_username = form.cleaned_data['username']
         return super().form_valid(form)
 
 
     def get_success_url(self, *args, **kwargs):
-        #user = authenticate(username=self.c_username, password=self.c_password)
-        #user2 = User.objects.get(username=self.c_username, password=self.c_password)
-        #print(user)
-        #print(user2)
+        c_user_id = User.objects.get(username=self.c_username).id
+        connected_myuser = MyUser(user_id=c_user_id)
+        connected_myuser.save()
         success_url = reverse('login')
         return success_url
+
+class AuthorDetailView(DetailView):
+
+    queryset = User.objects.all()
+    def get_queryset(self, **kwargs):
+        self.posts_queryset = Post.objects.filter(author_id=self.request.user.id)
+        return self.queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
 

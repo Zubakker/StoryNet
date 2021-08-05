@@ -1,10 +1,5 @@
-add new design for base.html and post_detail.html, add static dirs
+change static folder structure, add MyUser class
 
-In base.html I added circle links on the left as well as put the con-
-tent block in the middle of the page. All the changes are located in
-/static/styles/base.css, and pictures are located in /static/images
-
-In post_detail.html I created a page block with fixed aspect ratio, 
-where the text will be located. All the styles are in
-/posts/static/styles/post_detail.css and the scripts are in
-/posts/static/javascript/post_detai.js
+Moved /posts/static/* to /posts/static/posts/* and 
+/pages/static/* to /pages/static/pages/* and 
+Added MyUser class for Author information on about outhor pages
