@@ -1,13 +1,26 @@
 {% extends 'base.html' %}
 
-{% block content %}
 
-<p><a href=' {{ absolute_list_url }} '>Back to list</a></p>
-<p>Title: {{ object.title }}</p>
-<p>Author: {{ object.author }}</p>
-<p>Epigraph: {{ object.epigraph }}</p>
-<p>Text: {{ object.text}}</p>
-<p><a href=' {{ object.get_absolute_edit_url }} '>Edit</a></p>
-<p><a href=' {{ object.get_absolute_delete_url }} '>Delete</a></p>
+{% block content %}
+{% load static %}
+<script src='{% static "javascript/post_detail.js" %}'>
+</script>
+<script>
+let post_text = '{{ post.text }}'.split(' ');
+window.onload = pofig;
+</script>
+
+<link rel="stylesheet" href="{% static "styles/post_detail.css" %}">
+<div class='page' id='page_obj'>
+	<div>
+		<p id='text_obj'>net</p>
+	</div>
+</div>
+<div>
+	<p><a href=' {{ object.get_absolute_edit_url }} '>Edit</a></p>
+	<p><a href=' {{ object.get_absolute_delete_url }} '>Delete</a></p>
+	<button onclick='next_page()'> next </button>
+	<button onclick='previous_page()'> prev</button>
+</div>
 
 {% endblock content %}

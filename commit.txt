@@ -1,7 +1,10 @@
-add registration and login
+add new design for base.html and post_detail.html, add static dirs
 
-Registration is made with a RegisterView class in pages/views.py, 
-django's contib.auth.forms UserCreationForm is used for it
+In base.html I added circle links on the left as well as put the con-
+tent block in the middle of the page. All the changes are located in
+/static/styles/base.css, and pictures are located in /static/images
 
-Login is made by django's contrib.auth.urls and default django's 
-views and forms.
+In post_detail.html I created a page block with fixed aspect ratio, 
+where the text will be located. All the styles are in
+/posts/static/styles/post_detail.css and the scripts are in
+/posts/static/javascript/post_detai.js

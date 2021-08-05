@@ -46,7 +46,7 @@ def auth_view(request, *args, **kwargs):
 class RegisterView(CreateView):
     queryset = User.objects.all()
     form_class = UserCreationForm 
-    template_name = 'pages/register_form.html'
+    template_name = 'registration/register.html'
     c_username = ''
     c_password = ''
 

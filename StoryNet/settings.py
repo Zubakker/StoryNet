@@ -61,9 +61,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'), 
-            os.path.join(BASE_DIR, 'pages'), 
-            os.path.join(BASE_DIR, 'posts')
+            BASE_DIR / 'templates',
+            BASE_DIR / 'pages',
+            BASE_DIR / 'posts',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -76,6 +76,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'StoryNet.wsgi.application'
 
@@ -128,6 +129,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+    BASE_DIR / 'pages',
+    BASE_DIR / 'posts',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

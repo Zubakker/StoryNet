@@ -2,11 +2,33 @@
 <html>
 	<head>
 		<title> пётр лапа очень хороший </title>
+		{% load static %}
+		<link rel="stylesheet" href="{% static "styles/base.css" %}">
 	</head>
 	<body>
 		{% include 'navbar.html' %}
-		
-		{% block content %}
-		{% endblock %}
+
+		<div class='content'>
+			<div class='link_menu'>
+				<div>
+				<a href='{% url "home" %}'>
+					<img src='{% static "images/link.png" %}' class='link_menu_item'>
+				</a>
+				</div>
+				<div>
+				<a href='{% url "home" %}'>
+					<img src='{% static "images/link.png" %}' class='link_menu_item'>
+				</a>
+				</div>
+				<div>
+				<a href='{% url "home" %}'>
+					<img src='{% static "images/link.png" %}' class='link_menu_item'>
+				</a>
+				</div>
+			</div>
+			
+			{% block content %}
+			{% endblock %}
+		</div>
 	</body>
 </html>
