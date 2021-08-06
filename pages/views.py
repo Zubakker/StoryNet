@@ -12,23 +12,15 @@ from django.views.generic import (
 )
 import sys
 sys.path.append("..")
-from posts.models import Post, MyUser
+from posts.models import Post
+from .models import MyUser
+from .forms import AuthorForm
 
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
     #return HttpResponse('<h1> Home </h1>')
     return render(request, 'pages/home.html', {})
-
-def author_view(request, *args, **kwargs):
-    #return HttpResponse('<h1> Hello </h1>')
-    my_context = {
-            'my_text': 'author rocks',
-            'my_number': 796549,
-            'my_list': [1, 2, 3, 4],
-         }
-
-    return render(request, 'pages/author.html', my_context)
 
 def drafts_view(request, *args, **kwargs):
     #return HttpResponse('<h1> Drafts </h1>'
@@ -66,13 +58,24 @@ class RegisterView(CreateView):
         return success_url
 
 class AuthorDetailView(DetailView):
-
-    queryset = User.objects.all()
+    queryset = MyUser.objects.all()
+    template_name = 'pages/author_detail.html'
     def get_queryset(self, **kwargs):
         self.posts_queryset = Post.objects.filter(author_id=self.request.user.id)
         return self.queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        return context
 
+
+class AuthorUpdateView(UpdateView):
+    queryset = MyUser.objects.all()
+    template_name = 'pages/author_update.html'
+    form_class = AuthorForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+    
 

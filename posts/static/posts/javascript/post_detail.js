@@ -58,7 +58,6 @@ function next_page() {
 	if (page_number >= page_array.length) {
 		page_number = page_array.length - 1;
 	}
-	console.log(page_number, page_array.length);
 	let page_obj = document.getElementById('page_obj');
 	page_obj.innerHTML = page_array[ page_number ];
 	return;

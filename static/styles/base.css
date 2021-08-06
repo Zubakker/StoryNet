@@ -1,16 +1,16 @@
 .header {
-	background-color: gray;
-
 	margin-left: 25%;
 	margin-right: 25%;
+	margin-bottom: 2%;
+
+	border: 2px solid black;
 }
 .content {
-	background-color: yellow;
-
 	margin-left: 25%;
 	margin-right: 25%;
 
 	display: flex;
+	border: 2px solid black;
 }
 
 .link_menu {

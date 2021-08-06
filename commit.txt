@@ -1,5 +1,4 @@
-change static folder structure, add MyUser class
+add MyUser, design AuthorDetails and home page 
 
-Moved /posts/static/* to /posts/static/posts/* and 
-/pages/static/* to /pages/static/pages/* and 
-Added MyUser class for Author information on about outhor pages
+Moved MyUser to pages app, added AuthorDetails and AuthorUpdate views,
+Better designed AuthorDetails, changed design of /home/ page.

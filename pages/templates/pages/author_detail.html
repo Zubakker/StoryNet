@@ -1,9 +1,23 @@
 {% extends 'base.html' %}
 
 {% block header %}
+{% load static %}
 <link rel="stylesheet" href="{% static "pages/styles/author_detail.css" %}">
-<div class='about_author'>
-	<p> Author name </p>
+<script src='{% static "pages/javascript/author_detail.js" %}'>
+</script>
+<script>
+window.onload = shorter;
+</script>
+<div class='about_author' id='about-obj'>
+	<img src='{{ object.photo.url }}' class='profile_picture'>
+	<div class='author_text'>
+		<b class='author_fullname'>{{ object.full_name }}</b>
+		<p class='author_status'>{{ object.status }}</p>
+		<div class='bio_contacts'>
+			<div class='bio' id='bio-obj'>О себе:<br>{{ object.biography }}</div>
+			<div class='contacts' id='cont-obj'>Контакты:<br>{{ object.contacts }}</div>
+		</div>
+	</div>
 </div>
 {% endblock header %}
 
