@@ -6,7 +6,11 @@
 <script src='{% static "pages/javascript/author_detail.js" %}'>
 </script>
 <script>
+let bio_text = '{{ object.biography }}';
+let cont_text = '{{ object.contacts }}';
+let page_num = 2;
 window.onload = shorter;
+window.addEventListener('scroll', scroll_handler);
 </script>
 <div class='about_author' id='about-obj'>
 	<img src='{{ object.photo.url }}' class='profile_picture'>
@@ -14,12 +18,25 @@ window.onload = shorter;
 		<b class='author_fullname'>{{ object.full_name }}</b>
 		<p class='author_status'>{{ object.status }}</p>
 		<div class='bio_contacts'>
-			<div class='bio' id='bio-obj'>О себе:<br>{{ object.biography }}</div>
-			<div class='contacts' id='cont-obj'>Контакты:<br>{{ object.contacts }}</div>
+			<div class='bio' id='bio-obj'>О себе:<br></div>
+			<div class='contacts' id='cont-obj'>Контакты:<br></div>
 		</div>
 	</div>
 </div>
 {% endblock header %}
 
 {% block content %}
+<div class='post_list' id='post_list'>
+	{% for post in post_queryset %}
+	<div class='post_list_item'> 
+		<b><a href='{{ post.url }}' class='title_link'>{{ post.title }}</a></b>
+		<p>
+			{{ post.text }}
+			{% if post.long %}
+			...
+			{% endif %}
+		</p>
+	</div>
+	{% endfor %}
+</div>
 {% endblock content %}

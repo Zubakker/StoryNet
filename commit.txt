@@ -1,4 +1,10 @@
-add MyUser, design AuthorDetails and home page 
+add full design for /author/pk page
 
-Moved MyUser to pages app, added AuthorDetails and AuthorUpdate views,
-Better designed AuthorDetails, changed design of /home/ page.
+Author detail page:
+	Add posts list in the content bar
+	Change desing for base and author_detail (change borders)
+	Make link_menu fixed coordinates
+	Add pagination for posts
+	Posts link to their details
+	Posts are shortened to first 40 words
+	Pagination automatically loads next pages when scrolled to bottom

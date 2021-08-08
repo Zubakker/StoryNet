@@ -42,3 +42,18 @@
 	width: 40%;
 	padding-left: 5px;
 }
+
+
+.post_list {
+	width: 100%;
+}
+.post_list_item {
+	font-size: 15px;
+	border: 2px solid #d0d0d0;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+.title_link {
+	text-decoration: none;
+	color: black;
+}

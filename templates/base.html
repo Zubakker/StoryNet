@@ -22,7 +22,7 @@
 			{% endblock header %}
 		</div>
 
-		<div class='content'>
+		<div class='content_and_menu'>
 			<div class='link_menu'>
 				<div>
 				<a href='{% url "home" %}'>
@@ -40,9 +40,10 @@
 				</a>
 				</div>
 			</div>
-			
-			{% block content %}
-			{% endblock %}
+			<div class='only_content'>
+				{% block content %}
+				{% endblock %}
+			</div>
 		</div>
 	</body>
 </html>

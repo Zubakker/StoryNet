@@ -19,7 +19,7 @@ function pofig() {
 	
 	let current_page = '';
 	let dcurrent_page = '';
-	for (let word of post_text) {
+	for (let word of post_text.split(' ')) {
 		dcurrent_page += word + ' ';
 		page_obj.innerHTML = dcurrent_page;
 		let dheight = page_obj.offsetHeight;
