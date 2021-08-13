@@ -1,8 +1,70 @@
+.page_text {
+}
+
 .page {
 	aspect-ratio: 7 / 9;
-	background-color: gray;
+	background-color: #efede4;
 	padding-left: 20px;
 	padding-right: 20px;
 	padding-top: 20px;
 	padding-bottom: 20px;
+	margin-left: calc(325vh/18 - 75px);
+	margin-right: calc(325vh/18 - 75px);
+}
+
+.page_text {
+	position: relative;
+	aspect-ratio: 7 / 9;
+	width: 100%;
+}
+.first_page {
+	position: relative;
+	aspect-ratio: 7 / 9;
+	height: 100%;
+}
+.title_text {
+	font-size: 20px;
+}
+.summary {
+	font-size: 16px;
+}
+.epigraph {
+	font-size: 18px;
+	text-align: right;
+}
+.epigraph_author {
+	font-size: 16px;
+	text-align: right;
+}
+.left_link {
+	width: 50px;
+}
+.previous_page {
+	border: none;
+	background: none;
+	width: 50px;
+	height: 50px;
+	background-size: 50px;
+	padding: 0px;
+}
+.next_page {
+	border: none;
+	background: none;
+	width: 50px;
+	height: 50px;
+	background-size: 50px;
+	padding: 0px;
+}
+.author_name_link {
+	color: black;
+}
+.comment {
+	position: absolute;
+	bottom: 0;
+}
+.author_name {
+	color: black;
+}	
+.comments_link {
+	color: black;
 }

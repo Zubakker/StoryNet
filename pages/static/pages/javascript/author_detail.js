@@ -63,11 +63,10 @@ function cont_less() {
 function posts_more() {
 
 	let get_req = new XMLHttpRequest();
-	get_req.open('GET', '/author/1?page=' + page_num, true);
+	get_req.open('GET', author_page + '?page=' + page_num, true);
 	page_num += 1;
 
 	get_req.onload = function () {
-		console.log(get_req.responseText);
 		post_list = JSON.parse(get_req.responseText);
 		post_list_obj = document.getElementById('post_list');
 		for (let post_obj of post_list) {
@@ -75,7 +74,6 @@ function posts_more() {
 			if (post_obj['long']) {
 				added_text = '...';
 			}
-			console.log(post_obj["text"]);
 			post_list_obj.innerHTML += `
 			<div class='post_list_item'>
 				<b><a href='${post_obj["url"]}' class='title_link'>${post_obj["title"]}</a></b>

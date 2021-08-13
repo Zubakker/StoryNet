@@ -1,0 +1,63 @@
+.comment_list {
+	padding: 5px;
+	position: relative;
+}
+.comment_list_item {
+	font-size: 15px;
+	border: 2px solid #d0d0d0;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+.comment_tagline {
+	display: flex;
+}
+.comment_text_two {
+	width: calc(76vh - 40px);
+}
+.full_name {
+	width: 50%;
+}
+.time_created {
+	text-align: right;
+	width: 50%;
+}
+
+.text_like {
+	justify-content: space-between;
+	display: flex;
+	width: 100%;
+}
+.like_amount {
+}
+.like_button {
+	width: 30px;
+	height: 30px;
+	background-size: 30px;
+	border: none;
+	padding: 0px;
+}
+.author_name_link {
+	text-decoration: none;
+	color: black;
+}
+.text_submit {
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+}
+.submit_button {
+	width: 30px;
+	height: 30px;
+	background-size: 30px;
+	border: none;
+	padding: 0px;
+}
+.comment_text {
+	width: calc(76vh);
+	height: 40px;
+	position: relative;
+}
+.link_back_container {
+	font-size: 16px;
+	padding-left: 10px;
+}

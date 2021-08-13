@@ -9,11 +9,15 @@
 let bio_text = '{{ object.biography }}';
 let cont_text = '{{ object.contacts }}';
 let page_num = 2;
+let author_page = '{{ this_page_url }}';
 window.onload = shorter;
 window.addEventListener('scroll', scroll_handler);
 </script>
 <div class='about_author' id='about-obj'>
+	{% if object.photo %}
 	<img src='{{ object.photo.url }}' class='profile_picture'>
+	{% endif%}
+
 	<div class='author_text'>
 		<b class='author_fullname'>{{ object.full_name }}</b>
 		<p class='author_status'>{{ object.status }}</p>

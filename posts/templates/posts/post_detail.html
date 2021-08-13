@@ -10,13 +10,50 @@ let post_text = '{{ object.text }}';
 window.onload = pofig;
 </script>
 
-<link rel="stylesheet" href="{% static "posts/styles/post_detail.css" %}">
 <div class='page' id='page_obj'>
-	<div>
-		<p> null </p>
+	<link rel="stylesheet" href="{% static "posts/styles/post_detail.css" %}">
+	<div class='page_text' id='page_text_obj' hidden>
+	</div>
+	<div class='first_page' id='first_page_obj' >
+		<center><b class='title_text'>{{ object.title }}</b></center>
+		<center><a href='{{ link_back }}' class='author_name'>{{ author_name }}</a></center>
+		{% if object.summary %}
+			<p class='summary'>{{ object.summary }}</p>
+		{% endif %}
+		{% if object.epigraph %}
+			<p class='epigraph'>"{{ object.epigraph }}"</p>
+		{% endif %}
+		{% if object.epigr_author %}
+			<p class='epigraph_author'>-- {{ object.epigr_author }}</p>
+		{% endif %}
+		<div class='comment'>
+			<b>Featured <a href='{{ object.get_absolute_comments_url }}' class='comments_link'>Comments</a></b>
+			<br>
+			<br>
+			<b><a href='{{ top_comment.link }}' class='author_name_link'>{{ top_comment.user_name }}</a></b>
+			<br>
+			<span>{{ top_comment.text }}</span>
+		</div>
 	</div>
 </div>
-<button onclick='next_page()'>next</button>
-<button onclick='previous_page()'>prev</button>
-
 {% endblock content %}
+
+{% block left_menu%}
+<div class='left_links'>
+	<button 
+		onclick='previous_page()' 
+		class='previous_page' 
+		style='background-image: 
+				url("{% static "posts/images/previous.png" %}")'
+	> </button>
+</div>
+{% endblock left_menu %}
+
+{% block right_menu %}
+	<button 
+		onclick='next_page()'
+		class='next_page' 
+		style='background-image: 
+				url("{% static "posts/images/next.png" %}")'
+	> </button>
+{% endblock right_menu %}

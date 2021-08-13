@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class='page_author_search'>
+	<link rel="stylesheet" href="{% static "pages/styles/author_search.css" %}">
+	<form method='get' action="{% url 'author-search' %}" >
+		<input name='q' type='text' size='40'>
+		<input type='submit' value='Find'>
+	</form>
+	<br>
+		
+	{% for object in object_list %}
+	<div class='about_author' id='about-obj'>
+		{% if object.photo %}
+		<img src='{{ object.photo.url }}' class='author_photo'>
+		{% endif%}
+
+		<div class='author_text'>
+			<b class='author_fullname'>
+				<a href={% url "author-detail" pk=object.id %}>
+					{{ object.full_name }}
+				</a>
+			</b>
+			<p class='author_status'>{{ object.status }}</p>
+		</div>
+	</div>
+</div>
+{% endfor %}
+{% endblock content %}

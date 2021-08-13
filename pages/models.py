@@ -15,4 +15,4 @@ class MyUser(models.Model):
     photo = models.ImageField(upload_to='pages/avatars', blank=True)
 
     def get_absolute_url(self):
-        return reverse('author-by-id', kwargs={'pk': self.id})
+        return reverse('author-detail', kwargs={'pk': self.id})

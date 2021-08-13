@@ -1,0 +1,19 @@
+.page_author_search {
+	padding: 10px;
+}
+.about_author {
+	border: 2px solid #d0d0d0;
+	border-radius: 5px;
+	display: flex;
+}	
+.author_fullname {
+	font-size: 18px;
+}
+.author_photo {
+	width: 80px;
+	height: 80px;
+	margin-right: 10px;
+}
+.author_status {
+	font-size: 16px;
+}

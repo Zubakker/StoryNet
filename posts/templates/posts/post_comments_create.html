@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static "posts/styles/post_comments_create.css" %}">
+
+<script src="{% static "posts/javascript/post_comments_create.js" %}"></script>
+<script>
+let liked_img_url = '{% static "posts/images/liked.png" %}';
+let unliked_img_url = '{% static "posts/images/unliked.png" %}';
+let comments_url = '{{ comments_url }}';
+let page_num = 2;
+window.addEventListener('scroll', scroll_handler);
+</script>
+<div class='link_back_container'>
+	<a href='{{ link_back }}' class='link_back' ><- назад к автору</a>
+</div>
+<div class='comment_list' id='comment_list_obj'>
+	<div class='comment_list_item'>
+		<form method='POST' enctype="multipart/form-data"> {% csrf_token %}
+			<div class='comment_tagline'>
+				<b class='full_name'>{{ user_name }}</b>
+				<div class='time_created'>
+				</div>
+			</div>
+			<div class='text_submit'>
+				<p>{{ form.text }}</p>
+				<p>
+					<input 
+						type='submit' 
+						value=''
+						class='submit_button'
+						style='background-image:
+								url("{% static "posts/images/send_comment.png" %}")'
+						>
+				</p>
+				</div>
+			</form>
+		</div>
+		{% for object in comments %}
+		<div class='comment_list_item'>
+			<div class='comment_tagline'>
+				<b class='full_name'>
+					<a href='{{ object.link }}' class='author_name_link'>
+						{{ object.author_name }}
+					</a>
+				</b>
+				<div class='time_created'>
+					{{ object.created_at }}
+				</div>
+			</div>
+			<div class='text_like'>
+				<p class='comment_text_two'>{{ object.text }}</p>
+				<div class='like_full'>
+					<button 
+					 	class='like_button'
+						id='like_button_obj{{ object.id }}'
+						style='background-image: 
+							{% if object.ILiked %}
+								url("{% static "posts/images/liked.png" %}")
+							{% else %}
+								url("{% static "posts/images/unliked.png" %}")
+							{% endif %}
+							'
+					 	onclick='press_like({{ object.id }})'
+					>
+					</button>
+					<span id='like_number_obj{{ object.id }}'>{{ object.like_number }}</span>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+	<div id='custom_comments_obj'>
+	</div>
+</div>
+
+{% endblock content %}

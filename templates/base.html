@@ -22,27 +22,39 @@
 			{% endblock header %}
 		</div>
 
-		<div class='content_and_menu'>
-			<div class='link_menu'>
-				<div>
-				<a href='{% url "home" %}'>
-					<img src='{% static "images/link.png" %}' class='link_menu_item'>
-				</a>
+		<div class='content_and_menus'>
+			<div class='left_menu'>
+				<div class='link_menu'>
+					<div>
+					<a href='{% url "home" %}'>
+						<img src='{% static "images/home.png" %}' class='link_menu_item'>
+					</a>
+					</div>
+					<div>
+					<a href='{% url "author-search" %}'>
+						<img src='{% static "images/search.png" %}' class='link_menu_item'>
+					</a>
+					</div>
+					<div>
+					<a href='{% url "home" %}'>
+						<img src='{% static "images/drafts.png" %}' class='link_menu_item'>
+					</a>
+					</div>
 				</div>
-				<div>
-				<a href='{% url "home" %}'>
-					<img src='{% static "images/link.png" %}' class='link_menu_item'>
-				</a>
-				</div>
-				<div>
-				<a href='{% url "home" %}'>
-					<img src='{% static "images/link.png" %}' class='link_menu_item'>
-				</a>
+				<div class='left_button'>
+					{% block left_menu %}
+					{% endblock left_menu %}
 				</div>
 			</div>
 			<div class='only_content'>
 				{% block content %}
-				{% endblock %}
+				{% endblock content %}
+			</div>
+			<div class='right_menu'>
+				<div class='right_button' align='right'>
+					{% block right_menu %}
+					{% endblock right_menu %}
+				</div>
 			</div>
 		</div>
 	</body>

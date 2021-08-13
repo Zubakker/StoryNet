@@ -7,10 +7,13 @@ function pofig() {
 	let max_line_len = 45;
 	let max_line_num = 23;
 
-	let text_obj = document.getElementById('text_obj');
-	let page_obj = document.getElementById('page_obj');
-	let width = page_obj.offsetWidth;
-	let height = page_obj.offsetHeight;
+	let page_text_obj = document.getElementById('page_text_obj');
+	page_text_obj.hidden = false;
+	let first_page_obj= document.getElementById('first_page_obj');
+	first_page_obj.hidden= true;
+
+	let width = page_text_obj.offsetWidth;
+	let height = page_text_obj.offsetHeight;
 	
 	
 	// let current_line = '';
@@ -21,8 +24,8 @@ function pofig() {
 	let dcurrent_page = '';
 	for (let word of post_text.split(' ')) {
 		dcurrent_page += word + ' ';
-		page_obj.innerHTML = dcurrent_page;
-		let dheight = page_obj.offsetHeight;
+		page_text_obj.innerHTML = dcurrent_page;
+		let dheight = page_text_obj.offsetHeight;
 		if (dheight <= height) {
 			current_page += word + ' ';
 		}
@@ -54,12 +57,15 @@ function pofig() {
 	return;
 }
 function next_page() {
+	let page_text_obj = document.getElementById('page_text_obj');
+	page_text_obj.hidden = false;
+	let first_page_obj= document.getElementById('first_page_obj');
+	first_page_obj.hidden= true;
 	page_number += 1; 
 	if (page_number >= page_array.length) {
 		page_number = page_array.length - 1;
 	}
-	let page_obj = document.getElementById('page_obj');
-	page_obj.innerHTML = page_array[ page_number ];
+	page_text_obj.innerHTML = page_array[ page_number ];
 	return;
 }
 function previous_page() {
@@ -69,12 +75,14 @@ function previous_page() {
 		page_number = -1;
 		return;
 	}
-	let page_obj = document.getElementById('page_obj');
-	page_obj.innerHTML = page_array[ page_number ];
+	let page_text_obj = document.getElementById('page_text_obj');
+	page_text_obj.innerHTML = page_array[ page_number ];
 	return;
 }
 function title_page() {
-	let page_obj = document.getElementById('page_obj');
-	page_obj.innerHTML = 'первая страница';
+	let page_text_obj = document.getElementById('page_text_obj');
+	page_text_obj.hidden = true;
+	let first_page_obj= document.getElementById('first_page_obj');
+	first_page_obj.hidden= false;
 	return;
 }

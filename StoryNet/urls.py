@@ -20,10 +20,9 @@ from django.conf.urls.static import static
 from .settings import MEDIA_URL, MEDIA_ROOT
 
 from pages.views import (
-        home_view, drafts_view, 
-        messages_view, news_view, auth_view, 
+        home_view, 
         RegisterView, AuthorDetailView,
-        AuthorUpdateView,
+        AuthorUpdateView, AuthorSearchView,
 )
 
 urlpatterns = [
@@ -35,11 +34,8 @@ urlpatterns = [
 
     path('accounts/', include('django.contrib.auth.urls')),
 
-    path('author/<int:pk>', AuthorDetailView.as_view(), name='author-by-id'),
+    path('author/<int:pk>', AuthorDetailView.as_view(), name='author-detail'),
     path('author/<int:pk>/update', AuthorUpdateView.as_view(), name='author-update'),
-    path('drafts/', drafts_view, name='drafts'),
-    path('messages/', messages_view, name='messages'),
-    path('news/', news_view, name='news'),
-    path('auth/', auth_view, name='auth'),
+    path('author/search', AuthorSearchView.as_view(), name='author-search'),
     path('admin/', admin.site.urls, name='admin'),
 ] + static(MEDIA_URL, document_root=MEDIA_ROOT)

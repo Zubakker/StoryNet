@@ -10,6 +10,7 @@ from django.views.generic import (
         UpdateView, View,
         DetailView,
         FormView,
+        ListView,
 )
 from json import dumps
 
@@ -24,22 +25,6 @@ from .forms import AuthorForm
 def home_view(request, *args, **kwargs):
     #return HttpResponse('<h1> Home </h1>')
     return render(request, 'pages/home.html', {})
-
-def drafts_view(request, *args, **kwargs):
-    #return HttpResponse('<h1> Drafts </h1>'
-    return render(request, 'pages/drafts.html', {})
-
-def messages_view(request, *args, **kwargs):
-    #return HttpResponse('<h1> Messages </h1>'
-    return render(request, 'pages/messages.html', {})
-
-def news_view(request, *args, **kwargs):
-    #return HttpResponse('<h1> News </h1>'
-    return render(request, 'pages/news.html', {})
-
-def auth_view(request, *args, **kwargs):
-    #return HttpResponse('<h1> Auth </h1>'
-    return render(request, 'pages/auth.html', {})
 
 class RegisterView(CreateView):
     queryset = User.objects.all()
@@ -66,13 +51,13 @@ class AuthorDetailView(DetailView):
     queryset = MyUser.objects.all()
     template_name = 'pages/author_detail.html'
     def get(self, request, **kwargs):
-        post_queryset = Post.objects.filter(author_id=self.request.user.id)
+        post_queryset = Post.objects.filter(author_id=self.kwargs['pk'])
 
         pages = Paginator(post_queryset, 50)
         page_num = self.request.GET.urlencode().split('=')
         if page_num[0]:
             if int(page_num[1]) > pages.num_pages:
-                return HttpResponse('["error": "page_num_limit_exceeded"]')
+                return HttpResponse('{"error": "page_num_limit_exceeded"}')
             return_page = pages.page(int(page_num[1]))
             return_list = list()
             for obj in return_page:
@@ -96,7 +81,7 @@ class AuthorDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        post_queryset = Post.objects.filter(author_id=self.request.user.id)
+        post_queryset = Post.objects.filter(author_id=self.kwargs['pk'])
 
         pages = Paginator(post_queryset, 50)
         return_page = pages.page(1)
@@ -112,6 +97,7 @@ class AuthorDetailView(DetailView):
             
 
         context['post_queryset'] = return_page
+        context['this_page_url'] = reverse('author-detail', kwargs={'pk': self.kwargs['pk']})
         return context
 
 
@@ -124,4 +110,14 @@ class AuthorUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         return context
     
+
+class AuthorSearchView(ListView):
+    queryset = MyUser.objects.all()
+    template_name = 'pages/author_search.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = self.queryset.filter(full_name=query)
+        print(object_list)
+        return object_list
 

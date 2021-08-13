@@ -10,7 +10,7 @@ body {
 	border: 2px solid #d0d0d0;
 	border-radius: 10px;
 }
-.content_and_menu {
+.content_and_menus {
 	margin-left: calc(50vw - 55vh);
 	margin-right: calc(50vw - 55vh);
 
@@ -18,21 +18,20 @@ body {
 }
 .only_content {
 	background-color: white;
-	padding: 10px;
-	margin-left: 75px;
-	margin-right: 75px;
+	padding-top: 15px;
+	padding-bottom: 15px;
 	position: relative;
-
 	width: calc(100% - 75px);
-
 
 	border: 2px solid #d0d0d0;
 	border-radius: 10px;
 }
 
 .link_menu {
-	position: fixed;
 	padding-right: 20px;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 20px;
 
 }
 
@@ -41,3 +40,17 @@ body {
 	height: 55px;
 }
 
+.left_menu {
+	width: 75px
+
+}
+.left_button {
+	margin-top: calc(40vh - 180px);
+}
+
+.right_menu {
+	width: 75px;
+}
+.right_button {
+	margin-top: 40vh;
+}
